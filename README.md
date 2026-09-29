@@ -14,6 +14,7 @@ Bash scripts for the labs of the course "System Programming and OS Administratio
 ./count_files.sh -e conf          # only .conf files
 ./count_files.sh -r /etc          # with all subdirectories
 ./count_files.sh -h               # help
+./count_files.sh -r -e conf /etc  # all .conf files with subdirectories
 ```
 
 ## Example
