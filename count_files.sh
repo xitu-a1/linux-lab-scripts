@@ -9,8 +9,8 @@ DEPTH=(-maxdepth 1)     # by default look only in this directory
 # read options from the command line
 while getopts "e:rh" opt; do
     case $opt in
-        e) PATTERN="*.$OPTARG" ;;   # -e conf: count only .conf files
-        r) DEPTH=() ;;              # -r     : remove the depth limit, look in all subdirectories
+        e) PATTERN="*.${OPTARG#.}" ;; # -e conf or -e .conf: count only .conf files
+        r) DEPTH=() ;;                # -r: remove the depth limit, look in all subdirectories
         h) echo "Usage: $0 [-e extension] [-r] [-h] [directory]"; exit 0 ;;
         *) echo "Usage: $0 [-e extension] [-r] [-h] [directory]"; exit 1 ;;
     esac
