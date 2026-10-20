@@ -19,6 +19,12 @@ shift $((OPTIND - 1)) # skip the options, so $1 is now the directory
 
 TARGET_DIR="${1:-/etc}" # directory from the command line, or /etc if none is given
 
+# if no directory is given, take it from the config file (if there is one)
+if [ -z "$1" ] && [ -f /etc/count-files.conf ]; then
+    TARGET_DIR=$(grep '^DEFAULT_DIR=' /etc/count-files.conf | cut -d '=' -f 2)
+    echo "Config loaded: /etc/count-files.conf" >&2
+fi
+
 # stop if the directory does not exist
 if [ ! -d "$TARGET_DIR" ]; then
     echo "Error: directory $TARGET_DIR does not exist" >&2

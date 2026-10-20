@@ -1,0 +1,24 @@
+.TH COUNT_FILES 1 "October 2026" "count-files 2.0"
+.SH NAME
+count_files \- count regular files in a directory
+.SH SYNOPSIS
+count_files [\-e extension] [\-r] [\-h] [directory]
+.SH DESCRIPTION
+Counts regular files, directories and symbolic links in a directory
+and shows the total size of the files.
+If no directory is given, the directory from the config file is used,
+or /etc if there is no config file.
+.SH OPTIONS
+.TP
+\-e extension
+Count only files with this extension, for example: \-e conf
+.TP
+\-r
+Also count files in all subdirectories.
+.TP
+\-h
+Show help and exit.
+.SH FILES
+.TP
+/etc/count-files.conf
+Config file. The line DEFAULT_DIR=/some/dir sets the default directory.
