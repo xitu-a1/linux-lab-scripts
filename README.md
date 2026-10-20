@@ -5,6 +5,8 @@ Bash scripts for the labs of the course "System Programming and OS Administratio
 ## Contents
 
 - `count_files.sh` - counts regular files, directories and links in a directory (default: /etc)
+- `count_files.1`, `count-files.conf` - man page and config file
+- `packaging/rpm/count-files.spec` - spec file for the RPM package
 
 ## Usage
 
@@ -20,6 +22,16 @@ Bash scripts for the labs of the course "System Programming and OS Administratio
 ## Example
 
 ![Example output](images/demo.png)
+
+## RPM package
+
+![rpm -Uvh](images/rpm-upgrade.png)
+
+![rpm -qi](images/rpm-info.png)
+
+![man count_files](images/rpm-man.png)
+
+![config file](images/rpm-config.png)
 
 ## Author
 
