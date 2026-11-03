@@ -1,0 +1,7 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: count-files
+Source: https://github.com/xitu-a1/linux-lab-scripts
+
+Files: *
+Copyright: 2026 Radomskyi Anton <radomskyianton@gmail.com>
+License: MIT

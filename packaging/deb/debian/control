@@ -1,0 +1,14 @@
+Source: count-files
+Section: utils
+Priority: optional
+Maintainer: Radomskyi Anton <radomskyianton@gmail.com>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.5.1
+Homepage: https://github.com/xitu-a1/linux-lab-scripts
+
+Package: count-files
+Architecture: all
+Depends: ${misc:Depends}, bash, coreutils, findutils, grep
+Description: Script to count regular files in a directory
+ A Bash script that counts regular files, directories and symbolic links
+ in a directory (/etc by default).
