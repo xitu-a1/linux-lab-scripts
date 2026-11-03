@@ -1,3 +1,9 @@
+count-files (2.0-2) unstable; urgency=medium
+
+  * Add config file, man page, postinst and prerm
+
+ -- Radomskyi Anton <radomskyianton@gmail.com>  Tue, 03 Nov 2026 17:54:26 +0200
+
 count-files (2.0-1) unstable; urgency=medium
 
   * Initial release
