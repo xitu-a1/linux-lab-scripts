@@ -24,6 +24,15 @@ Bash scripts for the labs of the course "System Programming and OS Administratio
 
 ![Example output](images/demo.png)
 
+## PPA
+
+```bash
+sudo add-apt-repository ppa:xitu-a1/count-files
+sudo apt install count-files
+```
+
+![apt install from PPA](images/ppa-install.png)
+
 ## RPM package
 
 ![rpm -Uvh](images/rpm-upgrade.png)
