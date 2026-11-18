@@ -1,0 +1,61 @@
+name: Build Packages
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-rpm:
+    runs-on: ubuntu-latest
+    container: fedora:latest
+    steps:
+      - uses: actions/checkout@v7
+      
+      - name: Install build tools
+        run: dnf install -y rpm-build
+        
+      - name: Prepare sources
+        run: |
+          mkdir -p ~/rpmbuild/SOURCES/count-files-2.0
+          cp count_files.sh count_files.1 count-files.conf ~/rpmbuild/SOURCES/count-files-2.0/
+          cd ~/rpmbuild/SOURCES
+          tar czvf count-files-2.0.tar.gz count-files-2.0
+          
+      - name: Build RPM
+        run: rpmbuild -ba packaging/rpm/count-files.spec
+        
+      - name: Upload RPM artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: rpm-package
+          path: ~/rpmbuild/RPMS/noarch/*.rpm
+
+  build-deb:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      
+      - name: Install build tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential debhelper
+          
+      - name: Prepare build directory
+        run: |
+          mkdir -p build/count-files-2.0
+          cp count_files.sh count_files.1 count-files.conf build/count-files-2.0/
+          cp -r packaging/deb/debian build/count-files-2.0/
+          
+      - name: Build DEB
+        run: |
+          cd build/count-files-2.0
+          dpkg-buildpackage -us -uc -b
+          
+      - name: Upload DEB artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: deb-package
+          path: build/*.deb
